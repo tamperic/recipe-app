@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Recipe App</title>
+        <style>
+            html, body {
+                height: 100%;
+                margin: 0;
+            }
+            body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background-color: #ff9373;
+                color: #363636;
+                text-align: center;
+            }
+            .button {
+                display: inline-block;
+                padding: 15px 25px;
+                background-color: #c4f9a6;
+                color: #373636;
+                border-radius: 25px;
+                text-decoration: none;
+                font-weight: 600;
+                margin-top: 20px;
+            }
+            .button:hover {
+                background-color: #a7d78b;
+                color: #363535;
+            }
+            h1 {
+                font-size: 40px;
+            }
+            span {
+                background: #c4f9a6;
+                padding: 2px 15px;
+                border-radius: 14px;
+                animation: bgr-color-change 1.5s infinite alternate;
+            }
+
+            @keyframes bgr-color-change {
+                0% { background-color: #c4f9a6; }
+                100% { background-color: #9ac780; }
+            }
+            p {
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome to the <span>Recipe App!</span></h1>
+        <p>Explore a world full of delicious recipes.</p>
+        <a href="#" class="button">Let's get started!</a>
+    </body>
+</html>
