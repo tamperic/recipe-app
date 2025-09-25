@@ -1,59 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
+        {% load static %}
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Recipe App</title>
         <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            
             html, body {
                 height: 100%;
-                margin: 0;
             }
+
             body {
+                height: 100vh;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
-                align-items: center;
                 font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                background-color: #ff9373;
-                color: #363636;
-                text-align: center;
+                background: url("{% static 'recipes/images/background-img.jpg' %}") no-repeat center center/cover;
+                color: #fff;
+                position: relative;
             }
+
+            body::before {
+                content: "";
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(0, 0, 0, 0.55);
+                z-index: 0;
+            }
+
+            /* Header */
+            header {
+                width: 100%;
+                padding: 20px 40px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+                z-index: 1;
+                background: rgba(0, 0, 0, 0.265);
+            }
+
+            header h1 {
+                font-size: 28px;
+                font-weight: bold;
+            }
+
+            .nav-links a {
+                margin-left: 15px;
+                padding: 10px 18px;
+                color: #fff;
+                background: #e98074;
+                border-radius: 25px;
+                font-weight: 600;
+                transition: background 0.3s ease, transform 0.2s ease;
+                text-decoration: none;
+            }
+
+            .nav-links a:hover {
+                background: #e85a4f;
+                transform: translateY(-2px);
+            }
+
+            /* Content */
+            .content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                z-index: 1;
+                padding: 20px;
+            }
+
+            .content h1 {
+                font-size: 42px;
+                margin-bottom: 20px;
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            }
+
+            .content p {
+                font-size: 20px;
+                margin-bottom: 30px;
+                text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+            }
+
+            /* Button */
             .button {
                 display: inline-block;
-                padding: 15px 25px;
+                padding: 14px 28px;
                 background-color: #c4f9a6;
-                color: #373636;
-                border-radius: 25px;
+                color: #222;
+                border-radius: 30px;
                 text-decoration: none;
                 font-weight: 600;
                 margin-top: 20px;
-            }
-            .button:hover {
-                background-color: #a7d78b;
-                color: #363535;
-            }
-            h1 {
-                font-size: 40px;
-            }
-            span {
-                background: #c4f9a6;
-                padding: 2px 15px;
-                border-radius: 14px;
-                animation: bgr-color-change 1.5s infinite alternate;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             }
 
-            @keyframes bgr-color-change {
-                0% { background-color: #c4f9a6; }
-                100% { background-color: #9ac780; }
+            .button:hover {
+                background-color: #9ac780;
+                transform: translateY(-3px);
             }
-            p {
-                font-size: 20px;
+
+            /* Image */
+            img {
+                margin-top: 30px;
+                border: 2px solid #8c4e3b;
+                border-radius: 12px;
+                box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25);
+                max-width: 90%;
+                height: auto;
             }
         </style>
     </head>
     <body>
-        <h1>Welcome to the <span>Recipe App!</span></h1>
-        <p>Explore a world full of delicious recipes.</p>
-        <a href="#" class="button">Let's get started!</a>
+        <div class="container">
+            <header>
+                <h1>Recipe App</h1>
+                <div class="nav-links">
+                    <a href="#">Login</a>
+                    <a href="#">Singup</a>
+                </div>
+            </header>
+            <div class="content">
+                <h1>Welcome to the Recipe App!</h1>
+                <p>Explore a world full of delicious recipes.</p>
+                <a href="{% url 'recipes:list' %}" class="button">Let's get started!</a>
+            </div>
+        </div>
     </body>
 </html>
