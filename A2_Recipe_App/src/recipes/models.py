@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
+from django.shortcuts import reverse
 
 # Create your models here.
 class Recipe(models.Model):
@@ -9,6 +10,7 @@ class Recipe(models.Model):
     ingredients = models.TextField(help_text="Enter ingredients separated by commas")
     difficulty = models.CharField(max_length=12, editable=False, blank=True)
     description = models.TextField(help_text="Enter recipe description")
+    pic = models.ImageField(upload_to='recipes', default='no_picture.png')
 
     # Method to convert the comma separated 'ingredients' string inside 'Recipe' object into a list
     def return_ingredients_as_list(self):
@@ -42,3 +44,6 @@ class Recipe(models.Model):
 
     def __str__(self):
         return str(self.name)
+    
+    def get_absolute_url(self):
+        return reverse('recipes:detail', kwargs={'pk': self.pk})
