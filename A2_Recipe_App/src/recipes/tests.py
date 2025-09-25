@@ -42,3 +42,8 @@ class RecipeModelTest(TestCase):
     
         # Compare the value to the expected result i.e. 50
         self.assertEqual(difficulty, 'Easy')
+
+    def test_get_absolute_url(self):
+        recipe = Recipe.objects.get(id=1)
+        # get_absoute_url() should tak to the detail page of the recipe #1 adn load the URL /recipes/list/1
+        self.assertEqual(recipe.get_absolute_url(), '/list/1')
