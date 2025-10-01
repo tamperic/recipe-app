@@ -22,24 +22,6 @@
                 flex-direction: column;
             }
 
-            /* Header */
-            header {
-                width: 100%;
-                padding: 20px 40px;
-                display: flex;
-                align-items: start;
-                justify-content: left;
-                background: #e98074;
-            }
-
-            header h1 a {
-                font-size: 28px;
-                font-weight: bold;
-                text-decoration: none;
-                color: #fff;
-                padding: 10px 18px;
-            }
-
             /* Card */
             .card-container {
                 display: grid;
@@ -102,9 +84,7 @@
     </head>
 
     <body>
-        <header>
-            <h1><a href="{% url 'recipes:home' %}">Recipe List</a></h1>
-        </header>
+        {% include 'navbar/navbar.html' %}
 
         <div class="card-container">
             {% for object in object_list %}     {% comment %} go through the recipe list element-by-element {% endcomment %}

@@ -34,39 +34,6 @@
                 z-index: 0;
             }
 
-            /* Header */
-            header {
-                width: 100%;
-                padding: 20px 40px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                position: relative;
-                z-index: 1;
-                background: rgba(0, 0, 0, 0.265);
-            }
-
-            header h1 {
-                font-size: 28px;
-                font-weight: bold;
-            }
-
-            .nav-links a {
-                margin-left: 15px;
-                padding: 10px 18px;
-                color: #fff;
-                background: #e98074;
-                border-radius: 25px;
-                font-weight: 600;
-                transition: background 0.3s ease, transform 0.2s ease;
-                text-decoration: none;
-            }
-
-            .nav-links a:hover {
-                background: #e85a4f;
-                transform: translateY(-2px);
-            }
-
             /* Content */
             .content {
                 position: absolute;
@@ -121,18 +88,12 @@
     </head>
     <body>
         <div class="container">
-            <header>
-                <h1>Recipe App</h1>
-                <div class="nav-links">
-                    <a href="#">Login</a>
-                    <a href="#">Singup</a>
-                </div>
-            </header>
             <div class="content">
                 <h1>Welcome to the Recipe App!</h1>
                 <p>Explore a world full of delicious recipes.</p>
                 <a href="{% url 'recipes:list' %}" class="button">Let's get started!</a>
             </div>
+        {% include 'navbar/navbar.html' %}
         </div>
     </body>
 </html>
