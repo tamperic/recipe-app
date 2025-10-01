@@ -21,4 +21,6 @@ class RecipeListView(ListView):
         return context
 
     model = Recipe
-    template_name = 'recipes/detail.html'
+    template_name = 'recipes/detail.html'# Function-based view - records(request)
+def records(request):
+    return render(request, 'recipes/records.html')  # Display page
