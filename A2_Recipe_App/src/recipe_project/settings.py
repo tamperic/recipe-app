@@ -127,3 +127,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# AUTH (to protect views, so that they're displayed only after authentication - successful login)
+LOGIN_URL = 'login/'
