@@ -94,6 +94,7 @@
                     {% if user.is_authenticated %}
                         <li><a href="{% url 'recipes:home' %}">Home</a></li>
                         <li><a href="{% url 'recipes:list' %}">Recipes</a></li>
+                        <li><a href="{% url 'recipes:records' %}">Search</a></li>
 
                         {% if request.path == '/' %}   <!-- If user logs out from homepage, it will be to login page redirected -->  
                             <li><a href="{% url 'logout' %}?next=login">Logout</a></li>
