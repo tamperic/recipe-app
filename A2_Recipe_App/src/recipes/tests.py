@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .models import Recipe # To access Recipe model
+from .forms import RecipesSearchForm
 
 # Create your tests here.
 class RecipeModelTest(TestCase):
@@ -47,3 +48,51 @@ class RecipeModelTest(TestCase):
         recipe = Recipe.objects.get(id=1)
         # get_absoute_url() should tak to the detail page of the recipe #1 adn load the URL /recipes/list/1
         self.assertEqual(recipe.get_absolute_url(), '/list/1')
+
+
+class RecipeSearchFormTest(TestCase):
+    # Tests that difficulty dropdown has expected choices
+    def test_difficulty_choices(self):
+        form = RecipesSearchForm()
+        expected_diff_choices = [
+            ('', '--- Select Difficulty ---'),
+            ('Easy', 'Easy'),
+            ('Medium', 'Medium'),
+            ('Intermediate', 'Intermediate'),
+            ('Hard', 'Hard'),
+        ]
+        self.assertEqual(form.fields['difficulty'].choices, expected_diff_choices)
+
+    # Test that valid data passes form validation
+    def test_form_valid_data(self):
+        form_data = {
+            'recipe_name': 'Spaghetti',
+            'ingredients': 'Spaghetti, Parsley, Black papper',
+            'difficulty': 'Intermediate'
+        }
+        form = RecipesSearchForm(data = form_data)
+        self.assertTrue(form.is_valid())
+
+    # Test that missing required data fails validation
+    def test_form_invalid_data(self):
+        form_data = {
+            'recipe_name': '',
+            'ingredients': '',
+            'difficulty': ''
+        }
+        form = RecipesSearchForm(data = form_data)
+        self.assertTrue(form.is_valid())
+
+    # Test that all form fields have correct labels
+    def test_field_labels(self):
+        form = RecipesSearchForm()
+        self.assertEqual(form.fields['recipe_name'].label, '1. Enter one recipe name')
+        self.assertEqual(form.fields['ingredients'].label, '2. Enter one or multiple ingredients (separated by commas)')
+        self.assertEqual(form.fields['difficulty'].label, '3. Choose difficulty level')
+
+    # Test that the form contains all expected
+    def test_form_fields_exist(self):
+        form = RecipesSearchForm()
+        self.assertIn('recipe_name', form.fields)
+        self.assertIn('ingredients', form.fields)
+        self.assertIn('difficulty', form.fields)
