@@ -74,7 +74,7 @@ def get_chart(chart_type, data, **kwargs):
         plt.title('Frequency of Searched Ingredients Across Recipes')
 
     else:
-        print('Unkonwn chart type')
+        print('Unknown chart type')
 
     # Specify layout details
     plt.tight_layout()

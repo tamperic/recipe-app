@@ -97,7 +97,7 @@ def records(request):
             recipes_df = None
 
     else:
-        # # Default view - show all recipes table
+        # Default view - show all recipes table
         if qs:
             recipes_df = pd.DataFrame(qs.values())
             recipes_df = recipes_df.drop(columns=['description', 'pic'])
