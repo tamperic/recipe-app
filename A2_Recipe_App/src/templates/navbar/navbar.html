@@ -5,85 +5,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Navbar</title>
-        <style>
-            * {
-                box-sizing: border-box;
-                margin: 0;
-                padding: 0;
-            }
-
-            html, body {
-                height: 100%;
-            }
-
-            /* ___________________HEADER___________________ */
-            header {
-                font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                width: 100%;
-                padding: 20px 40px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                position: relative;
-                text-decoration: none;
-            }
-
-            /* Home navbar -> Header just for homepage */
-            .navbar-home {
-                z-index: 1;
-                background: rgba(0, 0, 0, 0.265);
-            }
-
-            /* Default navbar -> Header for all other pages, just not for homepage */
-            .navbar-default {
-                background: #e98074;
-            }
-
-
-            /* ___________________ALL LINKS___________________ */
-            a {
-                color: #fff;
-                text-decoration: none;
-            }
-
-            /* ___________________HEADING___________________ */
-            h1 a {
-                font-size: 28px;
-                font-weight: bold;
-            }
-
-            /* ___________________UL___________________ */
-            .nav-links {
-                display: flex;
-                justify-content: space-between;
-                list-style-type: none;
-                gap: 15px;
-            }
-            
-            /* ___________________LINKS of UL___________________ */
-            .nav-links a {
-                padding: 10px 18px;
-                font-size: 18px;
-                font-weight: bold;
-                border-radius: 25px;
-            }
-
-            /* Home navbar -> links just for homepage */
-            .navbar-home .nav-links a {
-                background: #e98074;
-            }
-
-            .nav-links a:hover {
-                background-color: #e85a4f;
-            }
-
-            .nav-links li:hover {
-                transition: background 0.3s ease, transform 0.2 ease;
-                transform: translateY(-2px);
-            }
-        </style>
+        <link rel="stylesheet" href="{% static 'recipes/style.css' %}">
     </head>
-    <body>
+    
+    <body class="navbar">
         <header class="{% if is_home %} navbar-home
                         {% else %} navbar-default
                         {% endif %}"
