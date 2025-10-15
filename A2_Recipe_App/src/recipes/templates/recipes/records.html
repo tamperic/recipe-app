@@ -50,35 +50,7 @@
             </div>
         </form>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const nameField = document.getElementById('id_recipe_name');
-                const ingredientsField = document.getElementById('id_ingredients');
-                const difficultyField = document.getElementById('id_difficulty');
-            
-                function disableOtherFields(activeField) {
-                    [nameField, ingredientsField, difficultyField].forEach(field => {
-                        if (field !== activeField) {
-                            field.disabled = true;
-                        }
-                    });
-                }
-            
-                function enableAll() {
-                    [nameField, ingredientsField, difficultyField].forEach(field => field.disabled = false);
-                }
-            
-                nameField.addEventListener('focus', () => disableOtherFields(nameField));
-                ingredientsField.addEventListener('focus', () => disableOtherFields(ingredientsField));
-                difficultyField.addEventListener('focus', () => disableOtherFields(difficultyField));
-            
-                // Optional: re-enable all fields when user clicks outside form
-                document.addEventListener('click', (e) => {
-                    if (!e.target.closest('form')) {
-                        enableAll();
-                    }
-                });
-            });
-        </script>
+        <!-- Import records.js to prevent users to use more than 1 filter field at a time -->
+        <script src="{% static 'recipes/records.js' %}"></script>
     </body>
 </html>
