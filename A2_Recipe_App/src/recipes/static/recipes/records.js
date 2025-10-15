@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ingredientsField.addEventListener('focus', () => disableOtherFields(ingredientsField));  // When user clicks 'Ingredients' field, disable other 2 fields
     difficultyField.addEventListener('focus', () => disableOtherFields(difficultyField));   // When user clicks 'Difficulty' field, disable other 2 fields
 
-    // Optional: re-enable all fields when user clicks outside form
+    // 5. Optional: re-enable all fields when user clicks outside form
     document.addEventListener('click', (e) => {
         if (!e.target.closest('form')) {
             enableAll();
