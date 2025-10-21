@@ -1,6 +1,6 @@
 # Recipe Web Application
 
-A full-stack web application built with **Python** and **Django** framework, deployed on **Heroku**, and powered by a **Postgres** database. This platform allows users to create, manage, and eplore recipes while providing statistical dashboards for recipe insights and data visualization.
+A full-stack web application built with **Python** and **Django** framework, deployed on **Heroku**, and powered by a **PostgreSQL** database. This platform allows users to create, manage, and explore recipes while providing data insights and visualization dashboards for a richer cooking experiance.
 
 ## 🛠️ Tech Stack
 - Backend - **Python** & **Django** framework
@@ -9,12 +9,12 @@ A full-stack web application built with **Python** and **Django** framework, dep
 - Deployment - **Heroku**
 
 ## 🚀 Features
-- **User Authentication** - signup & login
+- **User Authentication** - login system
 - **Recipe Management**: 
-    - Create, edit, delete recipes
-    - Add ingredients, cooking time and description
-    - Automatic calculation of fecipe difficulty based on cooking time and number of ingredients
-- **Recipe Search** - search for recipes by ingredient
+    - Create new recipes
+    - Add recipe name, ingredients, cooking time, description, and image
+    - Automatic calculation of recipe difficulty based on cooking time and number of ingredients
+- **Recipe Search** - search for recipes by recipe name, ingredients, and difficuty level
 - **Dashboards & Analytics**:
     - View recipe statistics
     - Data visualization (charts)
