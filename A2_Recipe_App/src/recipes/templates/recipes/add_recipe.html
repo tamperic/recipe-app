@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Add Recipe</title>
+        <link rel="stylesheet" href="{% static 'recipes/style.css' %}">
+    </head>
+
+    <body class="add-recipe-page">
+        {% include 'navbar/navbar.html' %}
+        <h1 class="add-h1">Add New Recipe:</h1>
+
+        <hr>
+
+        <form class="add-recipe-form" action="" method="POST" enctype="multipart/form-data">
+            {% comment %} Add Django security token {% endcomment %}
+            {% csrf_token %}
+
+            {% comment %} Django shortcut to automatically render all form fields inside p (paragraph) tags {% endcomment %}
+            {{ form.as_p }}
+
+            {% comment %} Save, Save and Add new recipe, Cancel buttons {% endcomment %}
+            <div class="add-btn-container">
+                <div class="save-buttons">
+                    <button class="submit-btn" type="submit">Save Recipe</button>
+                    <button class="submit-btn add" type="submit" name="save_add_new" value="true">Save and Add New Recipe</button>
+                </div>
+                <a href="{% url 'recipes:list' %}" class="cancel-btn">Cancel</a>
+            </div>
+        </form>
+    </body>
+</html>

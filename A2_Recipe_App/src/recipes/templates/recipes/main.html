@@ -11,11 +11,23 @@
     <body class="main-page">
         {% include 'navbar/navbar.html' %}
 
+        <!-- Recipe Cards -->
         <div class="card-container">
+            <!-- Add new recipe card -->
+            <div class="add-card">
+                <a href="{% url 'recipes:add_recipe' %}">
+                    <div class="add-card-content">
+                        <h3>+ Add New Recipe</h3>
+                        <p>Click to create a new recipe</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- All recipe cards -->
             {% for object in object_list %}     {% comment %} go through the recipe list element-by-element {% endcomment %}
-            <div class="card">
+            <div class="recipe-cards">
                 <img src="{{object.pic.url}}" width="150" height="200" alt="{{object.name}}"/>
-                <div class="card-content">
+                <div class="recipe-cards-content">
                     <h3>{{object.name}}</h3>
                     <p><b>{{object.cooking_time}} minutes</b></p>
                     <a href="{{object.get_absolute_url}}">View Recipe</a>

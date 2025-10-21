@@ -1,4 +1,5 @@
 from django import forms    # Import Django forms
+from .models import Recipe  
 
 # Specify choices as a tuple 
 CHART_CHOICES = (
@@ -40,3 +41,21 @@ class RecipesSearchForm(forms.Form):
         required=False, 
         widget=forms.Select(attrs={'class': 'form-select'})
     )
+
+class AddRecipeForm(forms.ModelForm):
+    class Meta:
+        model = Recipe
+        fields = ['name', 'ingredients', 'cooking_time', 'description', 'pic']
+        widgets = {
+            'name': forms.TextInput(attrs={'class':'form-control', 'placeholder': 'Enter recipe name...'}),
+            'ingredients': forms.Textarea(attrs={'class':'form-control', 'rows': 3, 'placeholder': 'Enter ingredients, separated by commas...'}),
+            'cooking_time': forms.NumberInput(attrs={'class':'form-control', 'placeholder': 'Enter cooking time in minutes'}),
+            'description': forms.Textarea(attrs={'class':'form-control', 'rows': 3, 'placeholder': 'Write a short description...'}),
+            'pic': forms.ClearableFileInput(attrs={'class':'form-control'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Remove help_text from all fields
+        for field in self.fields.values():
+            field.help_text = ''

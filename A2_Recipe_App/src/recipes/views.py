@@ -3,11 +3,12 @@ from django.views.generic import ListView, DetailView   # To display lists and d
 from .models import Recipe   # To access Recipe model 
 from django.contrib.auth.mixins import LoginRequiredMixin   # To protect class-based view so that view isn't displayed before successful login / authentication.
 from django.contrib.auth.decorators import login_required   # To protect function-based views
-from .forms import RecipesSearchForm    
+from .forms import RecipesSearchForm, AddRecipeForm
 from .models import Recipe
 import pandas as pd
 from .utils import get_chart
 from django.db.models import Q
+from django.shortcuts import render, redirect       # Django authentication libraries
 
 
 # Create your views here.
@@ -112,3 +113,24 @@ def records(request):
 
     # Load the recipes/records.html page using the data from above
     return render(request, 'recipes/records.html', context)  # Display page
+
+@login_required
+def add_recipe(request):
+    if request.method == 'POST':
+        form = AddRecipeForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            if 'save_add_new' in request.POST: 
+                return redirect('recipes:add_recipe')   # When user clicks 'Save and Add New Recipe' button, redirect to the same page 'add_recipe'
+            else:
+                return redirect('recipes:list')    # When user clicks 'Save Recipe' button, redirect to the main.html
+    else:
+        form = AddRecipeForm()
+    
+    # Prepare data to send from view to template
+    context = {
+        'form': form,   # Send the form data
+    }
+
+    # Load the 'add_recipe' page using "context" information
+    return render(request, 'recipes/add_recipe.html', context)
