@@ -119,11 +119,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'recipes' / 'static'
 ]
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # The absolute path to the direcotry where 'collectstatic' will collect static files for deployment
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # The absolute path to the direcotry where 'collectstatic' tool will collect static files for deployment
 
 # Parameters for media files - correspond to user-generated content
 MEDIA_URL = 'media/'
