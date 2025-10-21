@@ -122,6 +122,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'recipes' / 'static'
 ]
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # The absolute path to the direcotry where 'collectstatic' will collect static files for deployment
 
 # Parameters for media files - correspond to user-generated content
 MEDIA_URL = 'media/'
