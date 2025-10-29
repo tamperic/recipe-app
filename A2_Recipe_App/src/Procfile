@@ -1,1 +1,1 @@
-web: gunicorn recipe_project.wsgi
+web: gunicorn recipe_project.wsgi --chdir A2_Recipe_App/src --log-file -
