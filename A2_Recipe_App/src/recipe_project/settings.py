@@ -124,11 +124,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'      # Base URL location from which staticfiles will be served
+STATIC_URL = '/static/'      # Base URL location from which staticfiles will be served
 STATICFILES_DIRS = [        # It lists additional directories that Django's 'collectstatic' tool should search for static files
     BASE_DIR / 'recipes' / 'static'
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # The absolute path to the direcotry where 'collectstatic' tool will collect static files for deployment
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Parameters for media files - correspond to user-generated content
 MEDIA_URL = 'media/'
