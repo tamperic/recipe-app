@@ -125,7 +125,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'      # Base URL location from which staticfiles will be served
 STATICFILES_DIRS = [        # It lists additional directories that Django's 'collectstatic' tool should search for static files
-    BASE_DIR / 'recipes' / 'static'
+    # BASE_DIR / 'recipes' / 'static'
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'  # The absolute path to the direcotry where 'collectstatic' tool will collect static files for deployment
 
